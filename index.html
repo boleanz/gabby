@@ -100,6 +100,7 @@
   <div class="sinoname">
     <h1>julio "N3toy" loves allyssa "gabby"</h1>
     <div id="youtube-body"></div>
+    <audio id="background-audio" src="https://raw.githubusercontent.com/boleanz/boleanz/main/tanginanetoy.mp3" loop></audio>
     <pre id="iplookz" class="iplookz">Fetching...</pre>
     <div class="social-icons">
       <a href="https://discord.gg/kupalinogang " target="_blank" title="Kupalino Gang">
@@ -117,22 +118,23 @@
     let player;
     function onYouTubeIframeAPIReady() {
       player = new YT.Player("youtube-body", {
-        videoId: "q0ayAEspa8Y",
+        videoId: "mnBDfa5qcXQ",
         playerVars: {
           autoplay: 1,
           loop: 1,
-          playlist: "q0ayAEspa8Y",
+          playlist: "mnBDfa5qcXQ",
           controls: 0,
           modestbranding: 1,
           rel: 0,
           showinfo: 0,
-          mute: 0,
+          mute: 1,
         },
       });
     }
     const startButton = document.getElementById("startButton");
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
+    const audio = document.getElementById("background-audio");
     function resizeCanvas() {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -173,6 +175,7 @@
       startButton.style.display = "none";
       drawMatrix();
       fetchIPAndInfo();
+      audio.play().catch(err => console.error("Audio hindi nag load kupal:", err));
     });
     window.addEventListener("resize", () => {
       resizeCanvas();
